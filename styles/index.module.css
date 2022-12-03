@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+@media screen and (max-width: 600px) {
+    .App {
+        width: 100vw;
+        height: 100vh;
+        color:white;
+        --navColour: rgb(46, 46, 46);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .App {
+        width: 100vw;
+        height: 100vh;
+        color:white;
+        --navColour: rgb(17, 17, 17);
+    }
+}
+
+/* NAVBAR */
+
+.nav {
+    transform: translateX(var(--navTranslate));
+    position: fixed;
+    right: 0;
+    width: 50px;
+    height: 100vh;
+    background-color: var(--navColour);
+    opacity: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    transition-duration: 300ms;
+    backdrop-filter: blur(4px);
+    z-index: 100;
+}
+
+.nav > * {
+    user-select: none;
+}
+
+.navCollapse {
+    position: fixed;
+    transform: translateX(calc(var(--navTranslate)));
+    width: 50px;
+    aspect-ratio: 1;
+    top: 0;
+    right: 50px;
+    background-color: var(--navColour);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 300ms;
+    border-radius: 25px 0 0 25px;
+    z-index: 100;
+}
+
+.navCollapse > svg {
+    transform: rotate(var(--rotation));
+    -webkit-transform: rotate(var(--rotation));
+    transition-duration: 500ms;
+}
+
+
+.navLink {
+    rotate: -90deg;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    transition-duration: 200ms;
+}
+
+.navLink:hover {
+    color: gray;
+}
+
+.clipboard {
+    position: absolute;
+    transform: rotate(90deg) translateX(-115px) translateY(10px);
+    color: white;
+    opacity: 0;
+    animation-name: clipAnimation;
+    animation-duration: 3s;
+}
+
+@keyframes clipAnimation {
+    0% { transform: rotate(90deg) translateX(-115px) translateY(50px); opacity: 0%; }
+    15% { opacity: 100%; }
+    20% { transform: rotate(90deg) translateX(-115px) translateY(10px); }
+    90% { opacity: 100%; }
+    100% { opacity: 0; }
+}
+
+/* END NAVBAR */
+
+/* MAIN CONTENT */
+
+.main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PAGE 1 */
+
+.firstPage {
+    position: relative;
+    width: 75%;
+    height: 75%;
+    backdrop-filter: blur(4px);
+    border: white 2px solid;
+    border-radius: 20px;
+    animation: firstPageExpand;
+    animation-duration: 1s;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.firstPage > * {
+    animation: expandFirstPage;
+    animation-duration: 2s;
+    opacity: 100%;
+    user-select: none;
+}
+
+.scrollText {
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    margin: auto;
+}
+
+.scrollText > p {
+    transform: rotate(-90deg) translateY(-30px) translateX(10px);
+}
+
+.scrollLine {
+    width: 2px;
+    height: 30px;
+    background-color: white;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 200;
+}
+
+@keyframes firstPageExpand {
+    0%   { width: 0% }
+    100% { width: 75%; }
+}
+
+@keyframes expandFirstPage {
+    0%   { opacity: 0%; }
+    50%  { opacity: 0%; }
+    100% { opacity: 100% }
+}
+
+/* SEPARATOR */
+
+.separator {
+    width: 100vw;
+    height: 1px;
+    border-bottom: white 2px dotted;
+    z-index: 1;
+    position: relative;
+}
+
+
+/* CONTACT */
+
+.contact {
+    background-color: aqua;
+    width: 75%;
+    height: 75%;
+}
