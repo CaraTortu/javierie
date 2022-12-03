@@ -130,6 +130,7 @@ export default function Home() {
             <input type="email" id="Email" placeholder="Email: JohnDoe@doesnotexist.com" required/>
             <input type="text" id="Name" placeholder="Name: John Doe" required/>
             <input type="phone" id="Phone" placeholder="Phone number: +353 085 834 3647" />
+            <textarea id="Message" placeholder="Type your message here!" />
             <button>Send Email!</button>
           </div>
         </div>
