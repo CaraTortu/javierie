@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,6 +11,8 @@ import { loadFull } from "tsparticles";
 import { Engine } from 'tsparticles-engine';
 
 export default function Home() {
+
+  const [scrolled, setScrolled] = useState(false)
 
   function rotateArrow() {
     let root = document.querySelector(':root') as HTMLElement;
@@ -56,18 +58,26 @@ export default function Home() {
     document.getElementById("Discord")?.appendChild(copied)
   }
 
-  useEffect(() => {
-    const handleScroll = (event: Event) => {
+  const handleScroll = useCallback((event: Event) => {
 
+    if (!scrolled) {
       let scroll = document.getElementById("Scroll") as HTMLElement
       scroll.style.opacity = "0"
-
-      document.getElementsByTagName("body")[0].removeEventListener("scroll", handleScroll, false)
+      setScrolled(true)
     }
-    
-    document.getElementsByTagName("body")[0].addEventListener("scroll", handleScroll, false)
 
-  }, [])
+    // console.log(document.body.scrollTop)
+
+  }, [scrolled]);
+  
+  useEffect(() => {
+    document.body.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      document.body.removeEventListener("scroll", handleScroll);
+   }
+
+  }, [handleScroll])
 
   const particlesInit = useCallback(async (engine: Engine) => { await loadFull(engine); }, []);
 
