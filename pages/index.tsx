@@ -111,7 +111,27 @@ export default function Home() {
       {/* CONTACT PAGE */}
       <div className={styles.main}>
         <div className={styles.contact}>
-
+          <div className={styles.contactTitle}>
+            <h1>CONTACT</h1>
+            <h2 className={styles.contactDescription}>Would you like to talk to me? You can write me directly using the information below or use the following contact form!</h2>
+          </div>
+          <div className={styles.contactInfo}>
+            <h1>Information</h1>
+            <div>
+              <ul>
+                <li>Phone Number: +34 644 73 5757</li>
+                <li>Email: javier@javier.ie</li>
+                <li>You can always text me on discord: K4oS#8387</li>
+                <li>Click on the top right button to show more!</li>
+              </ul>
+            </div>
+          </div>
+          <div className={styles.form}>
+            <input type="email" id="Email" placeholder="Email: JohnDoe@doesnotexist.com" required/>
+            <input type="text" id="Name" placeholder="Name: John Doe" required/>
+            <input type="phone" id="Phone" placeholder="Phone number: +353 085 834 3647" />
+            <button>Send Email!</button>
+          </div>
         </div>
       </div>
     </div>
